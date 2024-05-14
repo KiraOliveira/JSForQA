@@ -1,60 +1,86 @@
-console.log('Olá, Javascript!')
+const LIST = [
+    {
+        id: 1,
+        name: 'Mestre Yoda',
+        avatar: 'images/yoda.png'
+    },
+    {
+        id: 2,
+        name: 'Luke Skywalker',
+        avatar: 'images/luke.png'
+    },
+    {
+        id: 3,
+        name: 'Princesa Leia',
+        avatar: 'images/leia.png'
+    },
+    {
+        id: 4,
+        name: 'Han Solo',
+        avatar: 'images/hansolo.png'
+    },
+    {
+        id: 5,
+        name: 'Darth Vader',
+        avatar: 'images/vader.png'
+    },
+    {
+        id: 6,
+        name: 'Chewbacca',
+        avatar: 'images/chewbacca.png'
+    },
+    {
+        id: 7,
+        name: 'R2D2',
+        avatar: 'images/r2d2.png'
+    },
+    {
+        id: 8,
+        name: 'C3pO',
+        avatar: 'images/c3po.png'
+    }
+]
 
-var userName = 'Kira'
+const App = new Vue({
+    el: '#app',
+    data: {
+        title: 'Star Wars Lego',
+        userName: 'Kira',
+        characters: LIST,
+        searchName: ''
+    },
+    methods: { // Usado para implementar funções - mas sem usar a palavra funcions
+        like(userName) {
+            alert(`O(A) personagem ${userName} recebeu um like!`)
+        },
 
-document.getElementById('user-name').innerHTML = userName
+        remove(id) {
+            const list = this.characters
 
-// Variáveis //
+            const result = list.filter(item => {
+                return item.id !== id
+            })
 
-/*var nome ='Meste Yoda'
-var idade = 100
-var jedi = true
+            this.characters = result
+        },
 
-console.log(typeof nome, typeof idade, typeof jedi)*/
+        search() {
 
-// Operadores Matemáticos //
+            if (this.searchName === '') {
+                return alert('O preenchimento do campo de busca é obrigatório!')
+            } 
 
-/*var n1 = typeof 5
-var n2 = typeof'5' // ele acaba concatenando, juntando 5 com 5 = 55
+            const list = this.characters = LIST
 
-var total = n1 + (n2)
+            const result = list.filter(item => { // ao invés de usar a palavra funcions, usamos => 
+                return item.name === this.searchName
+            })
 
-console.log(total)
-
-*/
-
-/*var n1 = 5
-var n2 = '5' 
-
-var total = n1 + parseInt(n2) // Colocando o paserInt ele faz uma conversão de String para Int
-
-console.log(total) */
-
-var n1 = 7
-var n2 = 2.5 
-
-console.log(typeof n1)
-console.log(typeof n2)
-
-var total = n1 + n2 
-var total1 = n1 * n2
-var total2 = n1 - n2
-var total3 = n1 / n2
-
-console.log(total, total1, total2, total3)
-
-// --------------------------------------------------------------- // 
-
-// Operadores de Comparação // 
-
-var v1 = 5
-var v2 = 5
-var v3 = '5'
-
-var resultado = v1 === v2
-var resultado1 = v1 === v3 // com 3 "iguais ===" ele leva em conta o tipo do dado
-var resultado2 = v1 == v2 // com 2 "iguais ==" ele só verifica se é o mesmo valor
-var resultado3 = v1 != v2 // Dessa forma ele não leva em consideração o tipo do dado, sendo assim retorna false que não são diferentes
-var resultado4 = v1 !== v3 // Dessa forma ele leva em consideração o tipo do dado, sendo assim retorna trueEles são diferentes
- 
-console.log(resultado, resultado1, resultado2, resultado3, resultado4)
+            if (result.length <= 0) {
+                alert('Nenhum registro encontrado')
+            } else {
+                this.characters = result
+            }
+        }
+    }
+})
