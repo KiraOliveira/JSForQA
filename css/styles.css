@@ -86,25 +86,15 @@ button {
 }
 
 /*Responsividade*/
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
    :root {
      font-size: 14px;
    }
-   /*body {
-     grid-template-columns: 1fr;
+   body {
+     grid-template-columns: 2fr;
      grid-template-rows: 0.2gr 0.8fr;
      grid-template-areas:
-       "profile"
-       "timeline";
+       "characters"
    }
- */
-   /*aside {
-     border-right: none;
-     padding: 32px 12px;
-   }
- 
-   nav {
-     overflow-y: visible;
-     padding: 22px;
-   }*/
  }
+ */
